@@ -19,7 +19,7 @@ const fs = require('fs/promises');
 // http://54.71.133.152:3000/stocks?stockNo=2618&date=202211
 (async () => {
   try {
-    // let stockNo = data;
+    // let stockNo = await p;
     let stockNo = await fs.readFile('stock.txt', 'utf-8') ;
     // console.log(stockNo);
     let date = '20221211';
