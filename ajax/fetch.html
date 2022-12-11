@@ -1,14 +1,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>axios</title>
+    <title>fetch</title>
   </head>
   <body>
     <button id="asyncBtn">非同步</button>
     <button id="countBtn">測試按鈕</button>
     <div id="count">0</div>
     <div id="response">message</div>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
     <script>
       let date = new Date();
 
@@ -16,15 +16,20 @@
 
       var asyncBtn = document.getElementById('asyncBtn');
       asyncBtn.addEventListener('click', function () {
-        responseDom.innerText = '開始 axios';
+        responseDom.innerText = '開始 fetch「非」同步請求';
         // http://54.71.133.152:3000/
-        axios
-          .get('http://54.71.133.152:3000/')
+        fetch('http://54.71.133.152:3000/')
           .then((response) => {
             console.log(response);
-            responseDom.innerText = `來自 axios 的結果 ${response.data}`;
+            return response.text();
           })
-          .catch();
+          .then((data) => {
+            console.log(data);
+            responseDom.innerText = `來自 fetch 的結果: ${data}`;
+          })
+          .catch((e) => {
+            console.error(e);
+          });
       });
 
       var count = document.getElementById('count');
