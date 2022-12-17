@@ -19,7 +19,7 @@ const fs = require('fs/promises');
   try {
     // let stockNo = await p;
     let stockNo = await fs.readFile('stock.txt', 'utf-8') ;
-    // console.log(stockNo);
+    console.log(stockNo);
     let date = '20221211';
     let response = await axios.get(`http://54.71.133.152:3000/stocks`, {
         params: {
@@ -28,8 +28,16 @@ const fs = require('fs/promises');
         },
       });
   
-      console.log('await', response.data);
+
+
+      
+      console.log('await', response.data.data);
     } catch (e) {
       console.error(e);
+    }finally{
+      if(connection){
+      connection.end();
+    }
     }
   })();
+

@@ -2,7 +2,6 @@
 
 ## lnstallation 
 
-## Blocks of code
 
 ```
 cp .env.example .env
