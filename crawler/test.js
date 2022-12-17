@@ -3,7 +3,9 @@ const mysql2 =require('mysql2/promise');
 (async () => {
     const connection =await mysql2.createConnection({
         host: '127.0.0.1',
-        user: 'root',
+        port: 3306,
+        user: 'admin',
+        password: '',
         database: 'stock_mfee31'
 });
 
